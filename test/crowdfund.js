@@ -34,24 +34,24 @@ contract("Crowdfund", (accounts) => {
     await crowdfund.launch(
       "Project that will be aborted",
       ethers.utils.parseUnits("300", 18),
-      Math.floor(Date.now() / 1000 + 906_001_200)
+      Math.floor(Date.now() / 1000 + 907_200)
     );
     await crowdfund.launch(
       "Project that will not meet funding goal",
       ethers.utils.parseUnits("300", 18),
-      Math.floor(Date.now() / 1000 + 906_001_200)
+      Math.floor(Date.now() / 1000 + 907_200)
     );
     await crowdfund.launch(
       "Project that will meet funding goal",
       ethers.utils.parseUnits("300", 18),
-      Math.floor(Date.now() / 1000 + 906_001_200)
+      Math.floor(Date.now() / 1000 + 907_200)
     );
 
     try {
       await crowdfund.launch(
         "Crowdfund that should fail",
         ethers.utils.parseUnits("100", 18),
-        Math.floor(Date.now() / 1000 + 1_000_000)
+        Math.floor(Date.now() / 1000 + 1000)
       );
       assert(false);
     } catch {
@@ -81,7 +81,7 @@ contract("Crowdfund", (accounts) => {
       from: accounts[1],
     });
 
-    await time.increase(950_000_000);
+    await time.increase(1_000_000);
 
     try {
       await crowdfund.contribute(3, ethers.utils.parseUnits("100", 18), {

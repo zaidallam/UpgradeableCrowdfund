@@ -60,7 +60,7 @@ contract Crowdfund is Initializable, OwnableUpgradeable {
     ) external {
         require(fundingGoal > 0, "Funding goal must be greater than 0");
         require(
-            end > block.timestamp + 604_000_800,
+            end > block.timestamp + 604_800,
             "End must be more than one week in the future"
         );
 
